@@ -24,6 +24,12 @@ int main (){
 			len++; 
 		}
 	} 
+	printf ("\nThong tin sinh vien\n") ;
+	printf ("\n%-3s|%-25s | %-5s | %-15s |\n","ID","NAME","AGE","SDT");
+
+	for (int i=0;i<len;i++){
+	    printf ("\n%-3d|%-25s | %-5d | %-15s |\n",sv[i].id,sv[i].name,sv[i].age,sv[i].phoneNumber); 
+	} 
 	//printf ("len=%d",len) ;
     printf  ("Nhap id sinh vien can them: ");
     scanf ("%d",&id); 
@@ -47,7 +53,7 @@ int main (){
         fflush(stdin);
         printf("Nhap ten: ");
         fgets(newSv.name, sizeof(newSv.name), stdin);
-        newSv.name[strcspn(newSv.name, "\n")] = 0;
+        newSv.name[strcspn(newSv.name, "\n")] = '\0';
         
         printf("Nhap tuoi: ");
         scanf("%d", &newSv.age);
@@ -55,13 +61,16 @@ int main (){
         fflush(stdin);
         printf("Nhap so dien thoai: ");
         fgets(newSv.phoneNumber, sizeof(newSv.phoneNumber), stdin);
-        newSv.phoneNumber[strcspn(newSv.phoneNumber, "\n")] = 0;
+        newSv.phoneNumber[strcspn(newSv.phoneNumber, "\n")] = '\0';
 
         for (int i=len;i>flag;i--) {
            sv[i] = sv[i - 1];
     }
-    sv[flag]=newSv ;
-    len++; 
+        sv[flag]=newSv ;
+        len++; 
+        for (int i=0;i<len;i++){
+            sv[i].id=i+1;	
+		} 
         printf("\n>> Da cap nhat thong tin thanh cong!\n");
      
 	} 
